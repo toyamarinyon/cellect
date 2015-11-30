@@ -1,0 +1,21 @@
+{
+  "name": "breeder.git",
+  "version": "0.0.1",
+  "description": "enta breeder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "proto-git:breeder.git"
+  },
+  "author": "toyamarinyon",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^6.1.18",
+    "babel-core": "^6.1.21",
+    "babel-preset-es2015": "^6.1.18",
+    "gulp-babel": "^6.1.0"
+  }
+}

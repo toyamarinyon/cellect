@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+</head>
+<body>
+<div class="container">
+  <div class="col-md-8 col-md-offset-2">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>timetable</th>
+          <th>Place1</th>
+          <th>Place2</th>
+          <th>Place3</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th>10:00</th>
+        <td class="plan-a cellectable">plan a</td>
+        <td class="plan-b cellectable">plan b</td>
+        <td class="plan-c cellectable">plan c</td>
+      </tr>
+      <tr>
+        <th>12:00</th>
+        <td class="plan-d cellectable">plan d</td>
+        <td class="plan-e cellectable">plan e</td>
+        <td class="plan-f cellectable">plan f</td>
+      </tr>
+      <tr>
+        <th>14:00</th>
+        <td class="plan-h cellectable">plan h</td>
+        <td class="plan-i cellectable">plan i</td>
+        <td class="plan-j cellectable">plan j</td>
+      </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-default cellector" data-activate-cells="a,i"   data-activate-color="active">a, i</button>
+    <button class="btn btn-default cellector" data-activate-cells="b,d"   data-activate-color="success">b, d</button>
+    <button class="btn btn-default cellector" data-activate-cells="a,c"   data-activate-color="warning">a, c</button>
+    <button class="btn btn-default cellector" data-activate-cells="a,b,c" data-activate-color="danger">a, b, c</button>
+    <button class="btn btn-default cellector" data-activate-cells="j"     data-activate-color="info">j</button>
+    <button class="btn btn-default cellector" data-activate-cells=""      data-activate-color="">clear</button>
+  </div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="application.js"></script>
+</body>
+</html>
