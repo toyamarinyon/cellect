@@ -5,6 +5,7 @@ import browserify from 'browserify'
 import watchify from 'watchify'
 import babelify from 'babelify'
 import notify from 'gulp-notify'
+import connect from 'gulp-connect'
 
 const compile = () => {
   const props = {
@@ -32,4 +33,5 @@ const compile = () => {
 let watching = false
 gulp.task('enable-watch-mode', () => watching = true)
 gulp.task('build', () => compile())
-gulp.task('watch', ['enable-watch-mode', 'build'])
+gulp.task('connect', () => connect.server({livereload: true}))
+gulp.task('watch', ['connect','enable-watch-mode', 'build'])
