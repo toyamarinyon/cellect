@@ -4,6 +4,7 @@ import source from 'vinyl-source-stream'
 import browserify from 'browserify'
 import watchify from 'watchify'
 import babelify from 'babelify'
+import jade from 'gulp-jade'
 import sass from 'gulp-sass'
 import notify from 'gulp-notify'
 import connect from 'gulp-connect'
@@ -40,7 +41,7 @@ gulp.task('html', () => {
   gulp.src('./tmp/*.html')
     .pipe(connect.reload())
 })
-gulp.task('stylesheets', () => {
+gulp.task('sass', () => {
   const options = {
     indentedSyntax: true,
     includePaths:[
@@ -56,6 +57,13 @@ gulp.task('stylesheets', () => {
 })
 gulp.task('watch', () => {
   gulp.watch(['./tmp/*.html'], ['html'])
-  gulp.watch(['./src/assets/stylesheets/**/*.sass'], ['stylesheets'])
+  gulp.watch(['./src/views/**/*.jade'], ['jade'])
+  gulp.watch(['./src/assets/stylesheets/**/*.sass'], ['sass'])
+})
+gulp.task('jade', () =>{
+  gulp.src(['src/views/**/*.jade','src/views/**/_*.jade'])
+    .pipe(jade())
+    .pipe(gulp.dest('dist'))
+    .pipe(connect.reload())
 })
 gulp.task('development', ['connect','enable-watch-mode', 'build', 'watch'])
