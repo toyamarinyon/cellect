@@ -1,0 +1,43 @@
+html(lang="en")
+  head
+    link(rel="stylesheet",type="text/css",href="./assets/stylesheets/app.css")
+  body
+    .container(style="margin-top: 16px")
+      .row
+        .col-md-1.schedule.schedule__header.schedule__header__color-purple
+          .event-summary
+            .event-summary--name シカバネ生存戦略
+            .event-summary--place room 603
+        .col-md-1.schedule.schedule__header.schedule__header__color-blue
+          .event-summary
+            .event-summary--name 新興宗教からの脱出2
+            .event-summary--place room 404
+        .col-md-1.schedule.schedule__header.schedule__header__color-orange
+          .event-summary
+            .event-summary--name 呪われたウェディング
+            .event-summary--place B1-Hall
+        .col-md-1.schedule.schedule__header.schedule__header__color-red
+          .event-summary
+            .event-summary--name 株式会社零狐春採用選考会
+            .event-summary--place B1-Hall
+        .col-md-1.schedule.schedule__header.schedule__header__color-green
+          .event-summary
+            .event-summary--name 新興宗教からの脱出2
+            .event-summary--place B1-Saloon
+        .col-md-1.schedule.schedule__header.schedule__header__color-pink
+          .event-summary
+            .event-summary--name 待合・物販
+            .event-summary--place room 401
+        .col-md-1.schedule.schedule__header.schedule__header__color-yellow
+          .event-summary
+            .event-summary--name 共用部
+            .event-summary--place 4F-Lounge
+      .row.margin-bottom-8px
+      .row
+        include schedules/_corpse
+        include schedules/_religion
+        include schedules/_wedding
+        include schedules/_recruit.jade
+        include schedules/_religion-b.jade
+        include schedules/_shop.jade
+        include schedules/_lounge.jade

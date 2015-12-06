@@ -1,3 +1,85 @@
 @import bootstrap
-.test
-  background-color: #fff
+@import mixin
+
+$main-purple: #972D84
+$lighten-purple: #cfaccc
+$main-blue: #37A1BC
+$lighten-blue: #A7CFDD
+$main-orange: #E79012
+$lighten-orange: #F3CD75
+$main-red: #CC372F
+$lighten-red: #EEB6A2
+$main-green: #7BB32D
+$lighten-green: #C5DA9E
+$main-pink: #D64F73
+$lighten-pink: #F0C1CA
+$main-yellow: #F0C31C
+$lighten-yellow: #F8EAA1
+$main-grey: #aaa
+$lighten-grey: #dadada
+
+=build-schedule-style($name, $main-color, $lighten-color)
+  &.schedule__header
+    padding-top: 8px
+    padding-bottom: 8px
+    border-radius: 10px 10px 0 0
+    color: #fff
+  &.schedule__header__color-#{$name}
+    background-color: $main-color
+  &.schedule__color-#{$name}
+    background-color: $lighten-color
+    .event
+      background-color: $main-color
+      color: $main-color
+      &.event__type-prepare
+        +striped-bg($lighten-color, $main-color)
+
+.schedule
+  margin-left: 8px
+  +build-schedule-style('purple', $main-purple, $lighten-purple)
+  +build-schedule-style('blue', $main-blue, $lighten-blue)
+  +build-schedule-style('orange', $main-orange, $lighten-orange)
+  +build-schedule-style('red', $main-red, $lighten-red)
+  +build-schedule-style('green', $main-green, $lighten-green)
+  +build-schedule-style('pink', $main-pink, $lighten-pink)
+  +build-schedule-style('yellow', $main-yellow, $lighten-yellow)
+  +build-schedule-style('grey', $main-grey, $lighten-grey)
+  .schedule--row
+    position: relative
+    padding-left: 8px
+    min-height: $line-height-computed
+    border-bottom: dotted 1px #fff
+    &.schedule--row__status-off
+      background-color: $lighten-grey
+      .event
+        background-color: $main-grey
+        color: $main-grey
+        &.event__type-prepare
+          +striped-bg($lighten-grey, $main-grey)
+
+  .event
+    position: absolute
+    z-index: 100
+    min-height: $line-height-computed
+    width: 16px
+    @for $i from 1 through 36
+      &.event__row-#{$i}
+        height: $line-height-computed * $i
+    .time
+      position: absolute
+      left: 20px
+      .start
+        font-size: 16px
+        font-weight: bold
+      .end
+        &:before
+          content: "-"
+  .event-summary
+    font-size: 11px
+    .event-summary--name
+      height: 50px
+    .event-summary--place
+      font-size: 10px
+
+.margin-bottom-8px
+  margin-bottom: 8px
