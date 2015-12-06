@@ -4,12 +4,13 @@ import source from 'vinyl-source-stream'
 import browserify from 'browserify'
 import watchify from 'watchify'
 import babelify from 'babelify'
+import sass from 'gulp-sass'
 import notify from 'gulp-notify'
 import connect from 'gulp-connect'
 
 const compile = () => {
   const props = {
-    entries: 'src/app.js',
+    entries: 'src/assets/javascripts/app.js',
     cache: {},
     packageCache: {},
     transform: [babelify],
@@ -21,7 +22,8 @@ const compile = () => {
     return stream
             .on('error', notify.onError("Error: <%= error.message %>"))
             .pipe(source('bundle.js'))
-            .pipe(gulp.dest('dist'))
+            .pipe(gulp.dest('dist/assets/javascripts'))
+            .pipe(connect.reload())
   }
   compiler
     .on('update', () => recompile())
@@ -34,4 +36,26 @@ let watching = false
 gulp.task('enable-watch-mode', () => watching = true)
 gulp.task('build', () => compile())
 gulp.task('connect', () => connect.server({livereload: true}))
-gulp.task('watch', ['connect','enable-watch-mode', 'build'])
+gulp.task('html', () => {
+  gulp.src('./tmp/*.html')
+    .pipe(connect.reload())
+})
+gulp.task('stylesheets', () => {
+  const options = {
+    indentedSyntax: true,
+    includePaths:[
+      'node_modules/bootstrap-sass/assets/stylesheets/'
+    ]
+  }
+  gulp
+    .src('src/assets/stylesheets/**/*.sass')
+    .pipe(sass(options))
+    .pipe(gulp.dest('dist/assets/stylesheets'))
+    .pipe(connect.reload())
+
+})
+gulp.task('watch', () => {
+  gulp.watch(['./tmp/*.html'], ['html'])
+  gulp.watch(['./src/assets/stylesheets/**/*.sass'], ['stylesheets'])
+})
+gulp.task('development', ['connect','enable-watch-mode', 'build', 'watch'])
