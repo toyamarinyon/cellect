@@ -62,7 +62,7 @@ gulp.task('watch', () => {
 })
 gulp.task('jade', () =>{
   gulp.src(['src/views/**/*.jade','src/views/**/_*.jade'])
-    .pipe(jade())
+    .pipe(jade({pretty:true}))
     .pipe(gulp.dest('dist'))
     .pipe(connect.reload())
 })

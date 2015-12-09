@@ -3,6 +3,11 @@ html(lang="en")
     link(rel="stylesheet",type="text/css",href="./assets/stylesheets/app.css")
   body
     .container(style="margin-top: 16px")
+      .row.margin-bottom-8px
+        .btn-group
+          a.btn.btn-default.ticket(data-activate-events="ticket-1") チケット１
+          a.btn.btn-default.ticket(data-activate-events="ticket-2") チケット２
+          a.btn.btn-default.ticket(data-activate-events="schedule--row") 元にもどす
       .row
         .col-md-1.schedule.schedule__header.schedule__header__color-purple
           .event-summary
@@ -41,3 +46,4 @@ html(lang="en")
         include schedules/_religion-b.jade
         include schedules/_shop.jade
         include schedules/_lounge.jade
+    script(src="./assets/javascripts/bundle.js")

@@ -1,15 +1,16 @@
 import $ from 'jquery'
+
 $( () => {
-  const $cellectors = $(".cellector")
-  const $cellectables = $(".cellectable")
-  $cellectors.on("click", (event) => {
-    const activateCells = $(event.currentTarget).data("activateCells").split(",")
-    const activateCellColor = $(event.currentTarget).data("activateColor")
-    $cellectables.removeClass("active success warning danger info")
-    for ( var i=0; i<activateCells.length; i++ ) {
-      $cellectables
-        .filter(".plan-"+activateCells[i])
-        .addClass(activateCellColor)
+  const $tickets = $('.ticket');
+  const $schedules = $('.schedule--row')
+  const scheduleOffClass = 'schedule--row__status-off'
+  $tickets.on("click", (event) => {
+    const activateEvents = $(event.currentTarget).data('activateEvents').split(',')
+    $schedules.addClass(scheduleOffClass)
+    for ( var i=0; i<activateEvents.length; i++ ) {
+      $schedules
+        .filter(`.${activateEvents[i]}`)
+        .removeClass(scheduleOffClass)
     }
   })
 })
